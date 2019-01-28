@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import '../css/LoginForm.css';
 
 
@@ -7,6 +8,20 @@ class LoginForm extends Component {
 	state = {
 		email: '',
 		password: ''
+	}
+
+	submitLogin = () => {
+		axios.get("http://douche")
+		.then(response => {
+			this.setState({
+				// console.log(response.data);
+				// this is where we set the state change
+			})
+			// do function logic here
+		})
+		.catch(error => {
+			console.log(error);
+		});
 	}
 
 	handleSubmit = (e) => {
@@ -32,7 +47,6 @@ class LoginForm extends Component {
 			  <input type="password" className="login-input" placeholder="Password" onChange={this.handlePasswordChange}
 			  value={this.state.password} />
 			  <input type="submit" value="Lets Go" className="login-button" />
-			  <p className="login-lost"><a href="#login">Forgot Password?</a></p>
 		    </form>
 			);
 	}

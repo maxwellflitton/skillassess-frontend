@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Header from './components/Header';
 import LoginForm from './components/LoginForm';
 import Home from "./components/Home";
 import About from "./components/About";
+import Contact from "./components/Contact";
 import {
   BrowserRouter,
   Route
@@ -26,6 +28,7 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route path="/login" component={LoginForm} />
             <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
         </div>
       </BrowserRouter>
     );
