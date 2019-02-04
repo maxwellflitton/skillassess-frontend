@@ -38,6 +38,10 @@ class LoginForm extends Component {
 		this.setState({email: e.target.value})
 	}
 
+	onSubmit() {
+		console.log("the button is being pushed");
+	}
+
 	render() {
 		return (
 			<form className="login">

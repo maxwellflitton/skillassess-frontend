@@ -5,6 +5,8 @@ import LoginForm from './components/LoginForm';
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Quizes from "./components/Quiz";
+
 import {
   BrowserRouter,
   Route
@@ -16,19 +18,48 @@ class App extends Component {
 
   state = {
     loginStatus : false,
-    loginMessage: "login"
-  }
+    actionButtonMessage: "login",
+    userProfile: {},
+    quizes : [
+      {
+        "title": "Basic Drug Calculations",
+        "department": "ULCH Renal",
+        "description": "Drug calculations for band 5 nursing applicants",
+        "id": 1
+      },
+      {
+        "title": "Basic Situation Awareness",
+        "department": "ULCH Renal",
+        "description": "Awareness situations for band 5 nursing applicants",
+        "id": 2
+      },
+      {
+        "title": "Basic Drug Calculations",
+        "department": "ULCH Renal",
+        "description": "Drug calculations for band 5 nursing applicants",
+        "id": 3
+      },
+      {
+        "title": "Basic Drug Calculations",
+        "department": "ULCH A and E",
+        "description": "Drug calculations for band 5 nursing applicants",
+        "id": 4
+      }
+    ]
+  };
 
   render() {
     return (
       <BrowserRouter>
         <div className="App">
           <Header 
-          LoginStatus="login" />
+          LoginStatus={this.state.loginStatus}
+          ActionButtonMessage={this.state.actionButtonMessage} />
             <Route exact path="/" component={Home}/>
             <Route path="/login" component={LoginForm} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
+            <Route path="/quizes" component={() => <Quizes QuizList={this.state.quizes} />} />
         </div>
       </BrowserRouter>
     );
