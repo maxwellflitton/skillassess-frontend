@@ -20,6 +20,9 @@ class App extends Component {
     loginStatus : false,
     actionButtonMessage: "login",
     userProfile: {},
+    authToken: "",
+    secondButton: "contact",
+    thirdButton: "about",
     quizes : [
       {
         "title": "Basic Drug Calculations",
@@ -48,15 +51,32 @@ class App extends Component {
     ]
   };
 
+  handlePassLoginDetails = (data) => {
+    this.setState({
+      userProfile: {
+        firstName: data["first_name"],
+        secondName: data["last_name"]
+      },
+      actionButtonMessage:"quizes",
+      loginStatus : true,
+      secondButton: "dashboard",
+      thirdButton: "logout"
+    })
+  }
+
   render() {
     return (
       <BrowserRouter>
         <div className="App">
           <Header 
           LoginStatus={this.state.loginStatus}
-          ActionButtonMessage={this.state.actionButtonMessage} />
+          ActionButtonMessage={this.state.actionButtonMessage}
+          SecondButton={this.state.secondButton}
+          ThirdButton={this.state.thirdButton} />
             <Route exact path="/" component={Home}/>
-            <Route path="/login" component={LoginForm} />
+            <Route path="/login" component={() => <LoginForm passLoginDetails={this.handlePassLoginDetails} 
+            LoginStatus={this.state.loginStatus} UserProfile = {this.state.userProfile} 
+            QuizList={this.state.quizes} />} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/quizes" component={() => <Quizes QuizList={this.state.quizes} />} />

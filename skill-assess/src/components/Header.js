@@ -9,11 +9,11 @@ const Header = (props) => {
 	return (
     <header>
       <div className="header">
-		 <a href="/" className="logo">Skill Assess</a>
+		 <Link to="/" className="logo">Skill Assess</Link>
 		 <div className="header-right">
 		   <Link className="active" to={"/" + actionTag}>{actionTag}</Link>
-		   <Link to="/contact">Contact</Link>
-		   <Link to="/about">About</Link>
+		   <Link to={"/" + props.SecondButton}>{props.SecondButton}</Link>
+		   <Link to={"/" + props.ThirdButton}>{props.ThirdButton}</Link>
 		 </div>
 	  </div>
     </header>

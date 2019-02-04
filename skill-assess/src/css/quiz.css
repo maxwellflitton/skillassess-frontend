@@ -46,3 +46,8 @@
   right: 10px;
   bottom: 5px;
 }
+
+.quizesTitle {
+  font-family: "Helvetica Neue";
+  color: white;
+}
