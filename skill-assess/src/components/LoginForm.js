@@ -52,7 +52,7 @@ class LoginForm extends Component {
 
 	render() {
 
-		if (this.props.LoginStatus == false && this.state.loadingStatus == false) {
+		if (this.props.LoginStatus === false && this.state.loadingStatus === false) {
 			return (
 				<form className="login" onSubmit={this.submitLogin}>
 				  <h1 className="login-title">Login</h1>
@@ -64,7 +64,7 @@ class LoginForm extends Component {
 			    </form>
 			);
 		}
-		else if (this.props.LoginStatus == false && this.state.loadingStatus == true) {
+		else if (this.props.LoginStatus === false && this.state.loadingStatus === true) {
 			return (
 			<form className="login" onSubmit={this.submitLogin}>
 		      <h1 className="login-title">Logging in</h1>

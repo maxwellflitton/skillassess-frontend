@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Quiz from "./Quiz";
+import Question from "./Question"
 import '../css/QuizDetail.css';
 
 
@@ -18,6 +19,10 @@ class QuizDetail extends Component {
         return (
         <div className="question container">
             <h1> Title </h1>
+            <div className="question">
+            <Question 
+            question="ranked" />
+            </div>
         </div>
 //            if (this.props.question == 'MCQ') {
 //
