@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Quizes from "./components/Quiz";
+import QuizDetail from "./components/QuizDetail"
 
 import {
   BrowserRouter,
@@ -47,8 +48,15 @@ class App extends Component {
         "department": "ULCH A and E",
         "description": "Drug calculations for band 5 nursing applicants",
         "id": 4
+      },
+      {
+        "title": "Advanced Life Support",
+        "department": "ULCH ITU",
+        "description": "Advanced Life Support",
+        "id": 5
       }
-    ]
+    ],
+    quizDetail : "",
   };
 
   handlePassLoginDetails = (data) => {
@@ -73,13 +81,18 @@ class App extends Component {
           ActionButtonMessage={this.state.actionButtonMessage}
           SecondButton={this.state.secondButton}
           ThirdButton={this.state.thirdButton} />
+
             <Route exact path="/" component={Home}/>
-            <Route path="/login" component={() => <LoginForm passLoginDetails={this.handlePassLoginDetails} 
-            LoginStatus={this.state.loginStatus} UserProfile = {this.state.userProfile} 
-            QuizList={this.state.quizes} />} />
+            <Route path="/login" component={() => <LoginForm passLoginDetails={this.handlePassLoginDetails}
+            LoginStatus={this.state.loginStatus} UserProfile = {this.state.userProfile}
+          QuizList={this.state.quizes} />} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/quizes" component={() => <Quizes QuizList={this.state.quizes} />} />
+
+           <Route exact path="/QuizDetail" component={QuizDetail}/>
+
+
         </div>
       </BrowserRouter>
     );

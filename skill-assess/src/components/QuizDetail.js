@@ -1,35 +1,45 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import '../css/quiz.css'
-
-const Quiz = (props) => {
-	return (
-		<div className="quizDiv">
-		 <h2>{props.title}</h2>
-		 <h3>{props.department}</h3>
-		 <p>{props.description}</p>
-		 <p></p>
-	     <Link className="quizEnterButton" to={"/quiz/" + props.id}>Take Quiz</Link>
-	  </div>
-		);
-};
+import axios from 'axios';
+import Quiz from "./Quiz";
+import '../css/QuizDetail.css';
 
 
-const Quizes = (props) => {
+class QuizDetail extends Component {
 
-	return (
-		<React.Fragment>
-		 <h1 className="quizesTitle">Your Quizes</h1>
-         {props.QuizList.map( (quiz) =>
-			<Quiz 
-			title={quiz.title}
-			department={quiz.department}
-			description={quiz.description}
-			id={quiz.id} /> 
-			)}
-        </React.Fragment>
-	  );
+	state = {
+		quizTitle: '',
+		questions: '',
+		completedTime: '0',
+		noOfQuestions: '',
+	}
 
-    };
+	render() {
+        return (
+        <div className="question container">
+            <h1> Title </h1>
+        </div>
+//            if (this.props.question == 'MCQ') {
+//
+//                    <React.Fragment>
+//                    <h1 className="Intro">This is a MCQ quiz!</h1>
+//                    <h1 className="Description">There are 5 possible answers to each question. Please choose one. </h1>
+//                    </React.Fragment>
+//            }
+//            else if (this.props.question == 'ranked') {
+//                    <React.Fragment>
+//                    <h1 className="Question">Hello!</h1>
+//                    </React.Fragment>
+//            } else {
+//                    <React.Fragment>
+//                    <h1 className="Question">Hello!</h1>
+//                    </React.Fragment>
+//            }
+		)
+	}
 
-export default Quizes
+
+}
+
+
+export default QuizDetail;
