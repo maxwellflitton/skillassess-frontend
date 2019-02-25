@@ -1,24 +1,26 @@
 import React, {Component} from 'react';
+import '../css/question.css';
 
 class Question extends Component {
 
 	state = {
-		quizTitle: '',
-		questions: '',
+	    questionType: 'MCQ',
+	    questionContent: '',
+	    answerContent: '',
 		completedTime: '0',
-		noOfQuestions: '',
 	}
 
 	render(){
-			if (this.props.question === 'MCQ') {
+			if (this.state.questionType === 'MCQ') {
 				return(
+				    <div className="question">
                    <React.Fragment>
-                   <h1 className="Intro">This is a MCQ quiz!</h1>
-                   <h1 className="Description">There are 5 possible answers to each question. Please choose one. </h1>
+                   <h1 className="Question">{this.state.questionContent}</h1>
                    </React.Fragment>
+                   </div>
                    )
            }
-           else if (this.props.question === 'ranked') {
+           else if (this.props.questionType === 'ranked') {
            		return (
                    <React.Fragment>
                    <h1 className="Question">Hello!</h1>
@@ -27,7 +29,7 @@ class Question extends Component {
            } else {
            		return (
                    <React.Fragment>
-                   <h1 className="Question">Hello!</h1>
+                   <h1 className="Question">Hi!</h1>
                    </React.Fragment>
                 )
            }
