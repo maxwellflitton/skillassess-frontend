@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../css/question.css';
 
+
 class Question extends Component {
 
 	state = {
@@ -21,6 +22,7 @@ class Question extends Component {
                    )
            }
            else if (this.props.questionType === 'ranked') {
+
            		return (
                    <React.Fragment>
                    <h1 className="Question">Hello!</h1>
@@ -30,6 +32,7 @@ class Question extends Component {
            		return (
                    <React.Fragment>
                    <h1 className="Question">Hi!</h1>
+
                    </React.Fragment>
                 )
            }
