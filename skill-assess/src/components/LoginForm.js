@@ -18,7 +18,7 @@ class LoginForm extends Component {
 	submitLogin = (e) => {
 		e.preventDefault();
 		this.setState({loadingStatus: true})
-		axios.get("https://reqres.in/api/users/2",
+		axios.post("https://skillassess-backend.herokuapp.com/api/v1/rest-auth/login/",
 		{headers: {"Access-Control-Allow-Origin": "*"}})
 		.then(response => {
 			this.setState({email: '', password: '', loadingStatus: true})
