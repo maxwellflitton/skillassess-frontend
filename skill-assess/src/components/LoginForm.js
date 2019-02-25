@@ -12,14 +12,17 @@ class LoginForm extends Component {
 		email: '',
 		password: '',
 		firstName: '',
-		loadingStatus: false
+		loadingStatus: false,
+		loginError: false,
+		loginErrorMessage: ""
 	}
 
 	submitLogin = (e) => {
 		e.preventDefault();
 		this.setState({loadingStatus: true})
 		axios.post("https://skillassess-backend.herokuapp.com/api/v1/rest-auth/login/",
-		{headers: {"Access-Control-Allow-Origin": "*"}})
+		{headers: {"Access-Control-Allow-Origin": "*",
+		"token": "e6939518e217de186929e5f1cd8686c4e300fb3c"}})
 		.then(response => {
 			this.setState({email: '', password: '', loadingStatus: true})
 			this.props.passLoginDetails(response.data["data"]);
@@ -28,7 +31,8 @@ class LoginForm extends Component {
 			// do function logic here
 		.catch(error => {
 			console.log(error);
-			this.setState({email: '', password: '', firstName: "it's working I think"})
+			this.setState({email: '', password: '', firstName: "it's working I think",
+				loadingStatus: false, loginError: true, loginErrorMessage: error})
 		});
 	}
 
@@ -52,7 +56,8 @@ class LoginForm extends Component {
 
 	render() {
 
-		if (this.props.LoginStatus == false && this.state.loadingStatus == false) {
+		if (this.props.LoginStatus == false && this.state.loadingStatus == false && 
+			this.state.loginError === false) {
 			return (
 				<form className="login" onSubmit={this.submitLogin}>
 				  <h1 className="login-title">Login</h1>
@@ -64,14 +69,23 @@ class LoginForm extends Component {
 			    </form>
 			);
 		}
-		else if (this.props.LoginStatus == false && this.state.loadingStatus == true) {
+		else if (this.props.LoginStatus === false && this.state.loadingStatus === true && 
+			this.state.loginError === false) {
 			return (
 			<form className="login" onSubmit={this.submitLogin}>
 		      <h1 className="login-title">Logging in</h1>
 			  <img src={logo} />
 			</form>
 			);
-		} else {
+		} else if (this.props.LoginStatus === false && this.state.loadingStatus === false && 
+			this.state.loginError === true) {
+				return (
+				<form className="login" onSubmit={this.submitLogin}>
+				  <h1 className="login-title">There's an error with the login! Please refresh to try again</h1>
+			      <h1 className="login-title">{this.loginErrorMessage}</h1>
+				</form>
+				)
+			} else {
 			return (
 				<React.Fragment>
 				<h1 className="loggedInTitle">Welcome!</h1>
