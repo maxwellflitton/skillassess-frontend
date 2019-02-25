@@ -14,9 +14,7 @@ const Quiz = (props) => {
 		);
 };
 
-
-const Quizes = (props) => {
-
+const Quizes = (props) => { //the object above called Quiz loops through Quizes object
 	return (
 		<React.Fragment>
 		 <h1 className="quizesTitle">Your Quizes</h1>

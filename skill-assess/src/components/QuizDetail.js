@@ -1,35 +1,38 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import '../css/quiz.css'
+import axios from 'axios';
+import Quiz from "./Quiz";
+import Question from "./Question";
+import '../css/QuizDetail.css';
 
-const Quiz = (props) => {
-	return (
-		<div className="quizDiv">
-		 <h2>{props.title}</h2>
-		 <h3>{props.department}</h3>
-		 <p>{props.description}</p>
-		 <p></p>
-	     <Link className="quizEnterButton" to={"/quiz/" + props.id}>Take Quiz</Link>
-	  </div>
-		);
-};
+class QuizDetail extends Component {
+
+	state = {
+	    quizType: '',
+	    quizName: 'Basic Anatomy',
+		completedTime: '0',
+	}
+
+//    function GoForward{
+//
+//    }
+
+	render() {
+        return (
+        <div className="questionContainer">
+            <h1> {this.state.quizName} </h1>
+            <div className="question">
+            </div>
+            <Question 
+            question="" />
+            <Link className="questionNavPre" to={"/quizes"}>Previous</Link>
+            <Link className="questionNavPost" to={"/"}>Next</Link>
+        </div>
+		)
+	}
 
 
-const Quizes = (props) => {
+}
 
-	return (
-		<React.Fragment>
-		 <h1 className="quizesTitle">Your Quizes</h1>
-         {props.QuizList.map( (quiz) =>
-			<Quiz 
-			title={quiz.title}
-			department={quiz.department}
-			description={quiz.description}
-			id={quiz.id} /> 
-			)}
-        </React.Fragment>
-	  );
 
-    };
-
-export default Quizes
+export default QuizDetail;

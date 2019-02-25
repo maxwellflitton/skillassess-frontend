@@ -1,0 +1,31 @@
+.questionContainer{
+    margin: 40px;
+    background: LightGrey;
+    border: none;
+    padding: 50px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+}
+
+.questionNavPre, .questionNavPost {
+  background-color: dodgerblue;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  width:100px;
+  position: absolute;
+}
+
+.questionNavPost {
+  right: 32%;
+}
+
+.questionNavPost {
+  left: 32%;
+}

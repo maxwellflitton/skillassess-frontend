@@ -71,6 +71,7 @@ class LoginForm extends Component {
 		}
 		else if (this.props.LoginStatus === false && this.state.loadingStatus === true && 
 			this.state.loginError === false) {
+
 			return (
 			<form className="login" onSubmit={this.submitLogin}>
 		      <h1 className="login-title">Logging in</h1>
