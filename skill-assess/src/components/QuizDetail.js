@@ -12,9 +12,10 @@ class QuizDetail extends Component {
 	    quizName: 'Basic Anatomy',
 		completedTime: 0,
 		questionNumber : 0,
-		questions : ["this is a placeholder", "this is another placeholder"],
-		displayQuestion: null, 
-		total: null 
+		questions : [{"question": "this is a placeholder", "answer": null},
+		{"question": "this is another placeholder", "answer": null}],
+		displayQuestion: {"question": null, "answer": null},
+		total: 5
 	}
 
 	startTest = () => {
@@ -22,23 +23,34 @@ class QuizDetail extends Component {
 		// here is where we will do the API call to get the questions in order to fill in the list of questions
 	}
 
-	submitAnswer = () => {
-		// here we will update the displayQuestion answer attribute  
+	submitAnswer = (data) => {
+	    // 1. Make a shallow copy of the items
+        let questions = [...this.state.questions];
+        // 2. Make a shallow copy of the item you want to mutate
+        let question = {...questions[this.state.questionNumber]};
+        // 3. Replace the property you're intested in
+        question.answer = data;
+        // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
+        questions[this.state.questionNumber] = question;
+        // 5. Set the state to our new copy
+        this.setState({questions});
 	}
 
-	moveForward = () => {
+	moveForward = (data) => {
 		if (this.state.questionNumber === this.state.total - 1) {
 
 		} else {
+		    this.submitAnswer(data)
 			this.setState({questionNumber: this.state.questionNumber + 1})
 		    this.setState({displayQuestion: this.state.questions[this.state.questionNumber]})
 		}
 	}
 
-	moveBackward = () => {
+	moveBackward = (data) => {
 		if (this.state.questionNumber === 0) {
 
 		} else {
+		    this.submitAnswer(data)
 			this.setState({questionNumber: this.state.questionNumber - 1})
 		    this.setState({displayQuestion: this.state.questions[this.state.questionNumber]})
 		}
@@ -47,15 +59,15 @@ class QuizDetail extends Component {
 	render() {
         return (
         <div className="questionContainer">
-        <button className="questionNavPost" to={"/"} onClick={this.startTest}>Start</button>
             <h1> {this.state.quizName} </h1>
             <div className="question">
-            {/* A JSX comment */}
             </div>
             <Question 
-            question={this.state.displayQuestion} />
-            <button className="questionNavPre" to={"/"} onClick={this.moveBackward}>Previous</button>
-            <button className="questionNavPost" to={"/"} onClick={this.moveForward}>Next</button>
+            question={this.state.displayQuestion}
+            passSubmitAnswer={this.submitAnswer} />
+            <button className="start" to={"/"} onClick={this.startTest}>Start</button>
+            <button className="questionNavPre"  onClick={this.moveBackward}>Previous</button>
+            <button className="questionNavPost" onClick={this.moveForward}>Next</button>
         </div>
 		)
 	}

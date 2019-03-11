@@ -9,7 +9,7 @@
     border-radius: 10px;
 }
 
-.questionNavPre, .questionNavPost {
+.questionNavPre, .questionNavPost, .start {
   background-color: dodgerblue;
   border: none;
   color: white;
@@ -19,13 +19,17 @@
   font-size: 16px;
   border-radius: 5px;
   width:100px;
-  position: absolute;
+  position: relative;
+}
+
+.questionNavPre {
+  left: 0px;
 }
 
 .questionNavPost {
-  right: 32%;
+  left: 50px;
 }
 
-.questionNavPost {
-  left: 32%;
+.start {
+  left: -50px
 }

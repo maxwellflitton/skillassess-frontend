@@ -1,6 +1,7 @@
 .question{
     margin: 40px;
     background: white;
+    color: black;
     display: block;
     border-radius: 10px;
 }

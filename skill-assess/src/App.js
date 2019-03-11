@@ -7,6 +7,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Quizes from "./components/Quiz";
 import QuizDetail from "./components/QuizDetail"
+import Question from "./components/Question"
 
 import {
   BrowserRouter,
